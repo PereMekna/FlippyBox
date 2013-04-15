@@ -1,15 +1,15 @@
 #include "Coordinates.h"
 
-Coordinates::Coordinates(int x, int y)
+Coordinates::Coordinates(int xx, int yy)
 {
-    if(x <= 800) m_x = x;
-    else m_x = 0;
+    if(xx <= 800) x = xx;
+    else x = 0;
 
-    if (x <= 600) m_y = y;
-    else m_y = 0;
+    if (yy <= 600) y = yy;
+    else y = 0;
 }
 
-Coordinates::Coordinates(const Coordinates& coor) : m_x(coor.m_x), m_y(coor.m_y)
+Coordinates::Coordinates(const Coordinates& coor) : x(coor.x), y(coor.y)
 {}
 
 bool operator==(const Coordinates& c1, const Coordinates& c2)
@@ -20,8 +20,8 @@ bool operator==(const Coordinates& c1, const Coordinates& c2)
 
 Coordinates& Coordinates::operator=(const Coordinates& coor)
 {
-    this->m_x = coor.m_x;
-    this->m_y = coor.m_y;
+    this->x = coor.x;
+    this->y = coor.y;
     return *this;
 }
 
