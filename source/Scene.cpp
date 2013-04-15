@@ -1,8 +1,11 @@
 #include "Scene.h"
 
 Scene::Scene(sf::RenderWindow& window) : m_window(window)
+{}
+
+void Scene::add_drawable(std::unique_ptr<Drawable> drawable)
 {
-    //ctor
+    if(drawable) m_drawables.push_back(std::move(drawable));
 }
 
 void Scene::draw_all() const
@@ -11,6 +14,6 @@ void Scene::draw_all() const
         it != m_drawables.end();
         ++it)
         {
-            (*it)->draw_sprite(m_window);
+            (*it)->draw(m_window);
         }
 }

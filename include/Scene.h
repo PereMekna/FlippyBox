@@ -19,8 +19,8 @@ class Scene
 {
     public:
         explicit Scene(sf::RenderWindow& window);
-        ~Scene();
-
+        ~Scene(){};
+        void add_drawable(std::unique_ptr<Drawable> drawable);
         void draw_all() const;
     private:
         std::vector<std::unique_ptr<Drawable> > m_drawables;        // Every things that can be drawn
