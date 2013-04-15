@@ -13,7 +13,9 @@ class Coordinates
     public:
         explicit Coordinates(int x, int y);
         Coordinates(const Coordinates& coor);
+
         Coordinates& operator =(const Coordinates& coor);
+        bool operator==(const Coordinates& coor);
 
 
     private:

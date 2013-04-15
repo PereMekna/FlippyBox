@@ -20,7 +20,7 @@ class Drawable : public sf::Drawable
 
     private:
         sf::Sprite m_sprite;
-        virtual void draw(sf::RenderWindow& window) const{window.draw(m_sprite);} // NVI
+        virtual void draw(sf::RenderWindow& window){window.draw(m_sprite);} // NVI
 
 
         Drawable(const Drawable&);              // Non copiable
