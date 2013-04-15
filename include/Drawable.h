@@ -18,12 +18,11 @@ class Drawable
     public:
         ~Drawable(){}
         void draw(sf::RenderWindow& window);
-        void update_position();
     protected:
-        explicit Drawable(sf::Sprite& sprite, std::shared_ptr<Coordinates> coordinates);
+        explicit Drawable(sf::Sprite sprite, std::shared_ptr<Coordinates> coordinates);
 
     private:
-        sf::Sprite& m_sprite;
+        sf::Sprite m_sprite;
         std::shared_ptr<Coordinates> m_coordinates;
 
         Drawable(const Drawable&);                                                      // Non copiable

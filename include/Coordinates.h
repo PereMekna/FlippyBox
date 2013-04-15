@@ -16,8 +16,9 @@ class Coordinates
 
         Coordinates& operator=(const Coordinates& coor);
 
-        int x;
-        int y;
+    private:
+        int m_x;
+        int m_y;
 };
         bool operator==(const Coordinates& c1, const Coordinates& c2);
 
