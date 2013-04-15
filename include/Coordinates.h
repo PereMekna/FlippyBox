@@ -1,7 +1,7 @@
 /*
 
     Coordinates.h
-    Provide abstraction for coordinates.
+    Provide structure for coordinates.
 
 
 */
@@ -12,8 +12,8 @@ class Coordinates
 {
     public:
         explicit Coordinates(int x, int y);
-        Coordinates(const Coordinates& coor);
 
+        Coordinates(const Coordinates& coor);
         Coordinates& operator=(const Coordinates& coor);
 
         int x;

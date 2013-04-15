@@ -1,7 +1,7 @@
 /*
 
     Drawable.h
-    Provide graphic objects.
+    Provide base class for graphic objects.
     Abstract.
 
 */
@@ -16,9 +16,11 @@
 class Drawable
 {
     public:
-        ~Drawable(){}
         void draw(sf::RenderWindow& window);
         void update_position();
+
+        ~Drawable(){}
+
     protected:
         explicit Drawable(sf::Sprite& sprite, std::shared_ptr<Coordinates> coordinates);
 
@@ -26,8 +28,8 @@ class Drawable
         sf::Sprite& m_sprite;
         std::shared_ptr<Coordinates> m_coordinates;
 
-        Drawable(const Drawable&);                                                      // Non copiable
-        Drawable& operator=(const Drawable&);                                           // Non copiable
+        Drawable(const Drawable&);
+        Drawable& operator=(const Drawable&);
 };
 
 #endif
