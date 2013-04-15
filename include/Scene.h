@@ -19,10 +19,13 @@
 class Scene
 {
     public:
-        Scene();
+        explicit Scene(sf::RenderWindow& window);
         ~Scene();
+
+        void draw_all() const;
     private:
         std::vector<std::unique_ptr<Drawable> > m_drawables;        // Every things that can be drawn
+        sf::RenderWindow& m_window;
 
         Scene(const Scene&);                                        // Non copiable
         Scene& operator=(const Scene&);                             // Non copiable

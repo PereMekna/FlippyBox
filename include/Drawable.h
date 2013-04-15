@@ -14,13 +14,13 @@ class Drawable : public sf::Drawable
 {
     public:
         ~Drawable(){}
+        void draw_sprite(sf::RenderWindow& window){draw(window);}
     protected:
-        Drawable(sf::Sprite sprite);
-        Drawable(sf::RectangleShape);
-        void setSprite();
+        explicit Drawable(sf::Sprite sprite);
+
     private:
         sf::Sprite m_sprite;
-        sf::RectangleShape m_rectangleShape;
+        virtual void draw(sf::RenderWindow& window) const{window.draw(m_sprite);} // NVI
 
         Drawable(const Drawable&);              // Non copiable
         Drawable& operator=(const Drawable&);   // Non copiable
