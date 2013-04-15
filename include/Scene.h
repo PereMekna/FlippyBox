@@ -20,11 +20,11 @@ class Scene
     public:
         explicit Scene(sf::RenderWindow& window);
         ~Scene(){};
-        void add_drawable(std::unique_ptr<Drawable> drawable);
+        void add_drawable(std::shared_ptr<Drawable> drawable);
         void draw_all() const;
         void update_sprites();
     private:
-        std::vector<std::unique_ptr<Drawable> > m_drawables;        // Every things that can be drawn
+        std::vector<std::shared_ptr<Drawable> > m_drawables;        // Every things that can be drawn
         sf::RenderWindow& m_window;
 
         Scene(const Scene&);                                        // Non copiable
