@@ -1,7 +1,7 @@
 /*
 
     Coordinates.h
-    Provide abstraction for coordinates
+    Provide abstraction for coordinates.
 
 
 */
@@ -14,15 +14,12 @@ class Coordinates
         explicit Coordinates(int x, int y);
         Coordinates(const Coordinates& coor);
 
-        Coordinates& operator =(const Coordinates& coor);
-        bool operator==(const Coordinates& coor);
-
+        Coordinates& operator=(const Coordinates& coor);
 
     private:
         int m_x;
         int m_y;
 };
-
-
+        bool operator==(const Coordinates& c1, const Coordinates& c2);
 
 #endif

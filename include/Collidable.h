@@ -23,7 +23,6 @@ class Collidable
 
         b2Body* m_body;
 
-
         Collidable(const Collidable&);              // Non copiable
         Collidable& operator=(const Collidable&);   // Non copiable
 };
