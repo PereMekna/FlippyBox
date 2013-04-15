@@ -22,6 +22,7 @@ class Scene
         ~Scene(){};
         void add_drawable(std::unique_ptr<Drawable> drawable);
         void draw_all() const;
+        void update_sprites();
     private:
         std::vector<std::unique_ptr<Drawable> > m_drawables;        // Every things that can be drawn
         sf::RenderWindow& m_window;
