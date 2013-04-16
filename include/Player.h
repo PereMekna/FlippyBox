@@ -10,10 +10,10 @@
 
 #include <memory>
 
-#include "Drawable.h"
+#include "FixedDrawable.h"
 #include "Coordinates.h"
 
-class Player : public Drawable
+class Player : public FixedDrawable
 {
     public:
         Player(sf::Sprite& sprite, std::shared_ptr<Coordinates> coor);

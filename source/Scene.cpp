@@ -5,16 +5,16 @@ Scene::Scene(sf::RenderWindow& window) : m_window(window)
 {}
 //
 // Add a drawable to the Scene
-void Scene::add_drawable(std::shared_ptr<Drawable> drawable)
+void Scene::add_fixed_drawable(std::shared_ptr<FixedDrawable> drawable)
 {
-    if(drawable) m_drawables.push_back(drawable);
+    if(drawable) m_fixed_drawables.push_back(drawable);
 }
 //
 // Update position of all sprites in the Scene
 void Scene::update_sprites()
 {
-    for(std::vector<std::shared_ptr<Drawable> >::const_iterator it = m_drawables.begin();
-        it != m_drawables.end();
+    for(std::vector<std::shared_ptr<FixedDrawable> >::const_iterator it = m_fixed_drawables.begin();
+        it != m_fixed_drawables.end();
         ++it)
         {
             (*it)->update_position();
@@ -24,9 +24,9 @@ void Scene::update_sprites()
 // Update position of all sprites in the Scene
 void Scene::draw_all() const
 {
-    m_window.clear(sf::Color(255, 255, 255));
-    for(std::vector<std::shared_ptr<Drawable> >::const_iterator it = m_drawables.begin();
-        it != m_drawables.end();
+    m_window.clear(sf::Color(sf::Color::White));
+    for(std::vector<std::shared_ptr<FixedDrawable> >::const_iterator it = m_fixed_drawables.begin();
+        it != m_fixed_drawables.end();
         ++it)
         {
             (*it)->draw(m_window);
