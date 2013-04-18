@@ -13,7 +13,7 @@
 
 #include <SFML\Graphics.hpp>
 
-#include "FixedDrawable.h"
+#include "Drawable.h"
 
 class Scene
 {
@@ -21,12 +21,12 @@ class Scene
         explicit Scene(sf::RenderWindow& window);
         ~Scene(){};
 
-        void add_fixed_drawable(std::shared_ptr<FixedDrawable> drawable);
+        void add_drawable(std::shared_ptr<Drawable> drawable);
         void draw_all() const;
         void update_sprites();
 
     private:
-        std::vector<std::shared_ptr<FixedDrawable> > m_fixed_drawables;
+        std::vector<std::shared_ptr<Drawable> > m_drawables;
         sf::RenderWindow& m_window;
 
         Scene(const Scene&);
