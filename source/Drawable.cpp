@@ -2,7 +2,9 @@
 //
 // Constructor
 Drawable::Drawable(sf::Sprite sprite, std::shared_ptr<Coordinates> coordinates) : m_sprite(sprite), m_coordinates(coordinates)
-{}
+{
+    std::cout << "Creating Drawable" << std::endl;
+}
 //
 // Draw sprite on window
 void Drawable::draw(sf::RenderWindow& window) const
@@ -19,5 +21,6 @@ void Drawable::update_position()
 // Set new sprite
 void Drawable::set_sprite(sf::Sprite sprite)
 {
+    std::cout << "Setting new sprite" << std::endl;
     m_sprite = sprite;
 }

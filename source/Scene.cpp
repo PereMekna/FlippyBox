@@ -2,22 +2,48 @@
 //
 // Constructor
 Scene::Scene(sf::RenderWindow& window) : m_window(window)
-{}
-//
-// Add a drawable to the Scene
-void Scene::add_drawable(std::shared_ptr<Drawable> drawable)
 {
-    if(drawable) m_drawables.push_back(drawable);
+    std::cout << "Creating Scene" << std::endl;
+}
+//
+// Add a drawable to Scene
+void Scene::add_drawable(std::string name, std::shared_ptr<Drawable> drawable)
+{
+    std::cout << "Adding Drawable: " << name << std::endl;
+    if(drawable) m_drawables.insert(std::make_pair(name, drawable));
+}
+//
+// Delete a drawable from Scene
+void Scene::delete_drawable(std::string name)
+{
+    std::map<std::string, std::shared_ptr<Drawable> >::iterator it = m_drawables.find(name);
+
+    if(it == m_drawables.end()) // Not found
+    {
+        std::cout << "Cannot delete, drawable " << name << " doesn't exist" << std::endl;
+    }
+    else
+    {
+        std::cout << "Deleting Drawable: " << name << std::endl;
+        m_drawables.erase(it);
+    }
+}
+//
+// Clear all Drawables from Scene
+void Scene::clear_drawable()
+{
+    std::cout << "Deleting all Drawables " << std::endl;
+    m_drawables.clear();
 }
 //
 // Update position of all sprites in the Scene
 void Scene::update_sprites()
 {
-    for(std::vector<std::shared_ptr<Drawable> >::const_iterator it = m_drawables.begin();
+    for(std::map<std::string, std::shared_ptr<Drawable> >::const_iterator it = m_drawables.begin();
         it != m_drawables.end();
         ++it)
         {
-            (*it)->update_position();
+            it->second->update_position();
         }
 }
 //
@@ -26,11 +52,11 @@ void Scene::draw_all() const
 {
     m_window.clear(sf::Color::White);
 
-    for(std::vector<std::shared_ptr<Drawable> >::const_iterator it = m_drawables.begin();
+    for(std::map<std::string, std::shared_ptr<Drawable> >::const_iterator it = m_drawables.begin();
         it != m_drawables.end();
         ++it)
         {
-            (*it)->draw(m_window);
+            it->second->draw(m_window);
         }
 
     m_window.display();
