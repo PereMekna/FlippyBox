@@ -24,12 +24,14 @@ void Scene::update_sprites()
 // Update position of all sprites in the Scene
 void Scene::draw_all() const
 {
-    m_window.clear(sf::Color(255, 255, 255));
+    m_window.clear(sf::Color::White);
+
     for(std::vector<std::shared_ptr<Drawable> >::const_iterator it = m_drawables.begin();
         it != m_drawables.end();
         ++it)
         {
             (*it)->draw(m_window);
         }
+
     m_window.display();
 }

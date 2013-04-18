@@ -16,16 +16,17 @@
 class Drawable
 {
     public:
-        void draw(sf::RenderWindow& window);
+        void draw(sf::RenderWindow& window) const;
         void update_position();
+        void set_sprite(sf::Sprite sprite);
 
         ~Drawable(){}
 
     protected:
-        explicit Drawable(sf::Sprite& sprite, std::shared_ptr<Coordinates> coordinates);
+        explicit Drawable(sf::Sprite sprite, std::shared_ptr<Coordinates> coordinates);
 
     private:
-        sf::Sprite& m_sprite;
+        sf::Sprite m_sprite;
         std::shared_ptr<Coordinates> m_coordinates;
 
         Drawable(const Drawable&);
