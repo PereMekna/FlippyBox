@@ -21,6 +21,5 @@ void Drawable::update_position()
 // Set new sprite
 void Drawable::set_sprite(sf::Sprite sprite)
 {
-    std::cout << "Setting new sprite" << std::endl;
     m_sprite = sprite;
 }
