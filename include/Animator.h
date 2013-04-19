@@ -11,33 +11,33 @@ class Animator
 {
     public:
         Animator(bool Play = false, bool Loop = true, float Time = 0.f);
-        Animator(std::shared_ptr<Drawable> drawable, Animation* NewAnim, bool Play = false, bool Loop = true, float Time = 0.f);
+        Animator(std::shared_ptr<Drawable> drawable, Animation* anim, bool play = false, bool loop = true, float time = 0.f);
         virtual ~Animator();
 
-        void SetAnim(Animation* NewAnim);
-        Animation* GetAnim();
-        void SetFrame(int Frame);
-        int GetCurrentFrame();
-        void SetFrameTime(float Time);
-        float GetFrameTime();
-        void SetLoop(bool Loop);
-        bool IsLoop();
-        void Pause();
-        void Play();
-        void Stop();
-        bool IsPaused();
-        bool IsStoped();
-        void anim(float ElapsedTime);
+        void set_anim(Animation* animation);
+        Animation* get_anim();
+        void set_frame(int frame);
+        int get_currentFrame();
+        void set_frameTime(float time);
+        float get_frameTime();
+        void set_loop(bool loop);
+        bool is_loop();
+        void pause();
+        void play();
+        void stop();
+        bool is_paused();
+        bool is_stoped();
+        void anim(float elapsedTime);
 
     private:
-        float myTime;
-        float myElapsedTime;
-        bool Paused;
-        bool myLoop;
+        float m_time;
+        float m_elapsedTime;
+        bool m_paused;
+        bool m_loop;
 
-        Animation* myAnim;
-        std::shared_ptr<Drawable> myDrawable;
-        unsigned int myCurrentFrame;
+        Animation* m_animation;
+        std::shared_ptr<Drawable> m_drawable;
+        unsigned int m_currentFrame;
 
 };
 

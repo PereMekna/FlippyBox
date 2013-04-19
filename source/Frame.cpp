@@ -3,27 +3,27 @@
 // Par copie
 Frame::Frame(const Frame& Cpy)
 {
-    Texture = Cpy.Texture;
-    Rect = Cpy.Rect;
-    Color = Cpy.Color;
+    texture = Cpy.texture;
+    rect = Cpy.rect;
+    color = Cpy.color;
 }
 
 // Texture et Rect
-Frame::Frame(sf::Texture* NewTexture, const sf::Rect<int>& NewRect, const sf::Color& NewColor)
+Frame::Frame(sf::Texture* newTexture, const sf::Rect<int>& newRect, const sf::Color& newColor)
 {
-    Texture = NewTexture;
-    Rect = NewRect;
-    Color = NewColor;
+    texture = newTexture;
+    rect = newRect;
+    color = newColor;
 }
 
 // Texture (Le Rect est au dimension de l'Texture)
-Frame::Frame(sf::Texture* NewTexture, const sf::Color& NewColor)
+Frame::Frame(sf::Texture* newTexture, const sf::Color& newColor)
 {
-    Texture = NewTexture;
-    if (Texture != NULL)
-        Rect = sf::Rect<int>(0, 0, Texture->getSize().x, Texture->getSize().y);
+    texture = newTexture;
+    if (texture != NULL)
+        rect = sf::Rect<int>(0, 0, texture->getSize().x, texture->getSize().y);
 
-    Color = NewColor;
+    color = newColor;
 }
 
 // destructeur

@@ -12,23 +12,23 @@ Animation::~Animation()
 // Copy
 Animation::Animation(const Animation& Cpy)
 {
-    myFrame = Cpy.myFrame;
+    m_frames = Cpy.m_frames;
 }
 //
 // Push frame
-void Animation::PushFrame(const Frame& NewFrame)
+void Animation::push_frame(const Frame& NewFrame)
 {
-    myFrame.push_back(NewFrame);
+    m_frames.push_back(NewFrame);
 }
 //
 // Number of frames
-size_t Animation::Size() const
+size_t Animation::size() const
 {
-    return myFrame.size();
+    return m_frames.size();
 }
 
 // Accès a la frame numéro N
 Frame& Animation::operator [] (size_t N)
 {
-    return myFrame[N];
+    return m_frames[N];
 }

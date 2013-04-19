@@ -1,27 +1,27 @@
 #include "Animator.h"
 
 // Par défault
-Animator::Animator(bool Play, bool Loop, float Time)
+Animator::Animator(bool play, bool loop, float time)
 {
-    myAnim = NULL;
-    myCurrentFrame = 0;
-    myTime = Time;
-    myElapsedTime = Time;
-    Paused = !Play;
-    myLoop = Loop;
+    m_animation = NULL;
+    m_currentFrame = 0;
+    m_time = time;
+    m_elapsedTime = time;
+    m_paused = !play;
+    m_loop = loop;
 }
 
 // Directement avec une Animation
-Animator::Animator(std::shared_ptr<Drawable> drawable, Animation* NewAnim, bool Play, bool Loop, float Time)
+Animator::Animator(std::shared_ptr<Drawable> drawable, Animation* newAnim, bool play, bool loop, float time)
 {
-    myTime = Time;
-    myElapsedTime = Time;
-    Paused = !Play;
-    myLoop = Loop;
-    myAnim = NewAnim;
-    myDrawable = drawable;
+    m_time = time;
+    m_elapsedTime = time;
+    m_paused = !play;
+    m_loop = loop;
+    m_animation = newAnim;
+    m_drawable = drawable;
 
-    SetFrame(0);
+    set_frame(0);
 }
 
 // Destructeur
@@ -31,136 +31,136 @@ Animator::~Animator()
 }
 
 // Comme 'SetImage', sauf qu'on lui fournit l'Animation
-void Animator::SetAnim(Animation* NewAnim)
+void Animator::set_anim(Animation* animation)
 {
-    myAnim = NewAnim;
+    m_animation = animation;
 
-    SetFrame(0);
+    set_frame(0);
 }
 
 // Retourne un pointeur sur l'anim
-Animation* Animator::GetAnim()
+Animation* Animator::get_anim()
 {
-    return myAnim;
+    return m_animation;
 }
 
 // Passer à l'image numéro X
-void Animator::SetFrame(int Frame)
+void Animator::set_frame(int frame)
 {
-    if ( myAnim != NULL)
+    if ( m_animation != NULL)
     {
-        if (myAnim->Size() > 0)
+        if (m_animation->size() > 0)
         {
-            if ((*myAnim)[Frame].Texture != NULL)
+            if ((*m_animation)[frame].texture != NULL)
                 {
                     sf::Sprite sprite;
-                    sprite.setTexture(*((*myAnim)[Frame].Texture));
-                    sprite.setTextureRect((*myAnim)[Frame].Rect);
-                    sprite.setColor((*myAnim)[Frame].Color);
+                    sprite.setTexture(*((*m_animation)[frame].texture));
+                    sprite.setTextureRect((*m_animation)[frame].rect);
+                    sprite.setColor((*m_animation)[frame].color);
 
-                    myDrawable->set_sprite(sprite);
+                    m_drawable->set_sprite(sprite);
 
-                    myCurrentFrame = Frame;
+                    m_currentFrame = frame;
                 }
         }
     }
 }
 
 //Retourne La frame courante
-int Animator::GetCurrentFrame()
+int Animator::get_currentFrame()
 {
-    return myCurrentFrame;
+    return m_currentFrame;
 }
 
 // Fixer le temps entre chaques Frame
-void Animator::SetFrameTime(float Time)
+void Animator::set_frameTime(float time)
 {
-    myTime = Time;
+    m_time = time;
 }
 
 // retourne le temps entre chaques Frame
-float Animator::GetFrameTime()
+float Animator::get_frameTime()
 {
-    return myTime;
+    return m_time;
 }
 
 // Jouer en boucle ?
-void Animator::SetLoop(bool Loop)
+void Animator::set_loop(bool loop)
 {
-    myLoop = Loop;
+    m_loop = loop;
 }
 
 // Jouer en boucle ?
-bool Animator::IsLoop()
+bool Animator::is_loop()
 {
-    return myLoop;
+    return m_loop;
 }
 
 // Met en pause la lecture
-void Animator::Pause()
+void Animator::pause()
 {
-    Paused = true;
+    m_paused = true;
 }
 
 // Relance la lecture
-void Animator::Play()
+void Animator::play()
 {
-    Paused = false;
+    m_paused = false;
 }
 
 // Met en pause la lecture, et 'rembobine'
-void Animator::Stop()
+void Animator::stop()
 {
-    SetFrame(0);
-    myElapsedTime = myTime;
-    Paused = true;
+    set_frame(0);
+    m_elapsedTime = m_time;
+    m_paused = true;
 }
 
 // Est En pause ?
-bool Animator::IsPaused()
+bool Animator::is_paused()
 {
-    return Paused;
+    return m_paused;
 }
 
 // Est Stoppé ?
-bool Animator::IsStoped()
+bool Animator::is_stoped()
 {
-    return (Paused && (myCurrentFrame == 0) && (myElapsedTime == myTime));
+    return (m_paused && (m_currentFrame == 0) && (m_elapsedTime == m_time));
 }
 
 // Fonction à appeler à chaque tours de boucle, prend le temps
 // écoulé depuis le dernier appel à la fonction en paramètre
-void Animator::anim(float ElapsedTime)
+void Animator::anim(float elapsedTime)
 {
     // Si il n'est pas en pause et que l'animation est valide
-    if (!Paused && myAnim != NULL)
+    if (!m_paused && m_animation != NULL)
     {
         // on retranche le temps écoulé a notre compteur
-        myElapsedTime -= ElapsedTime;
+        m_elapsedTime -= elapsedTime;
 
         // Si Le temps entre chaque frame est atteint
-        if (myElapsedTime <= 0.f)
+        if (m_elapsedTime <= 0.f)
         {
             // On réinitialise notre compteur
-            myElapsedTime = myTime;
+            m_elapsedTime = m_time;
 
             // On passe a la frame suivante
-            if (myCurrentFrame + 1 < myAnim->Size())
-                myCurrentFrame++;
+            if (m_currentFrame + 1 < m_animation->size())
+                m_currentFrame++;
             else
             {
                 // Ou on a la premiere
-                if (myLoop)
-                    myCurrentFrame = 0;
+                if (m_loop)
+                    m_currentFrame = 0;
                 else
                 {
                     // Si le mode Loop est désactivé, on stop l'animation
-                    Stop();
+                    stop();
                 }
             }
 
             // On change la frame
-            SetFrame(myCurrentFrame);
+            set_frame(m_currentFrame);
         }
     }
 }

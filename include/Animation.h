@@ -10,12 +10,12 @@ class Animation
         Animation(const Animation& Cpy);
         virtual ~Animation();
 
-        void PushFrame(const Frame& NewFrame);
-        size_t Size() const;
+        void push_frame(const Frame& NewFrame);
+        size_t size() const;
         Frame& operator [] (size_t N);
 
     private:
-        std::vector<Frame> myFrame;
+        std::vector<Frame> m_frames;
 };
 
 #endif // ANIMATION_H

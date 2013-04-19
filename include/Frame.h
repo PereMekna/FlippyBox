@@ -7,14 +7,14 @@ class Frame
 {
     public:
         Frame();
-        Frame(sf::Texture* NewTexture, const sf::Rect<int>& NewRect, const sf::Color& NewColor = sf::Color::White);
-        Frame(sf::Texture* NewTexture, const sf::Color& NewColor = sf::Color::White);
+        Frame(sf::Texture* newTexture, const sf::Rect<int>& newRect, const sf::Color& newColor = sf::Color::White);
+        Frame(sf::Texture* newTexture, const sf::Color& newColor = sf::Color::White);
         Frame(const Frame& Cpy);
         virtual ~Frame();
 
-        sf::Texture* Texture;
-        sf::Rect<int> Rect;
-        sf::Color Color;
+        sf::Texture* texture;
+        sf::Rect<int> rect;
+        sf::Color color;
 
 };
 
