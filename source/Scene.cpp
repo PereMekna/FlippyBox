@@ -29,6 +29,12 @@ void Scene::delete_drawable(std::string name)
     }
 }
 //
+// Return number of drawables
+int Scene::get_number_drawables()
+{
+    return m_drawables.size();
+}
+//
 // Clear all Drawables from Scene
 void Scene::clear_drawable()
 {
@@ -37,7 +43,7 @@ void Scene::clear_drawable()
 }
 //
 // Update position of all sprites in the Scene
-void Scene::update_sprites()
+void Scene::update_position_sprites()
 {
     for(std::map<std::string, std::shared_ptr<Drawable> >::const_iterator it = m_drawables.begin();
         it != m_drawables.end();

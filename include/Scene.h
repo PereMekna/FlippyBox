@@ -25,10 +25,11 @@ class Scene
 
         void add_drawable(std::string name, std::shared_ptr<Drawable> drawable);
         void delete_drawable(std::string name);
+        int get_number_drawables();
         void clear_drawable();
 
         void draw_all() const;
-        void update_sprites();
+        void update_position_sprites();
 
     private:
         std::map<std::string, std::shared_ptr<Drawable> > m_drawables;

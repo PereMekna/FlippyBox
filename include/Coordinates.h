@@ -7,6 +7,7 @@
 */
 #ifndef COORDINATES_H
 #define COORDINATES_H
+
 #include <iostream>
 
 class Coordinates
