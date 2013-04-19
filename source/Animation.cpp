@@ -27,7 +27,7 @@ size_t Animation::size() const
     return m_frames.size();
 }
 
-// Accès a la frame numéro N
+// Get N frame
 Frame& Animation::operator [] (size_t N)
 {
     return m_frames[N];

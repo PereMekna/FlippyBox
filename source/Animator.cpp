@@ -1,6 +1,6 @@
 #include "Animator.h"
-
-// Par défault
+//
+// Constructor
 Animator::Animator(bool play, bool loop, float time)
 {
     m_animation = NULL;
@@ -10,41 +10,41 @@ Animator::Animator(bool play, bool loop, float time)
     m_paused = !play;
     m_loop = loop;
 }
-
-// Directement avec une Animation
-Animator::Animator(std::shared_ptr<Drawable> drawable, Animation* newAnim, bool play, bool loop, float time)
+//
+// Constructor with Animation
+Animator::Animator(std::shared_ptr<Drawable> drawable, std::shared_ptr<Animation> anim, bool play, bool loop, float time)
 {
     m_time = time;
     m_elapsedTime = time;
     m_paused = !play;
     m_loop = loop;
-    m_animation = newAnim;
+    m_animation = anim;
     m_drawable = drawable;
 
     set_frame(0);
 }
-
-// Destructeur
+//
+// Destructor
 Animator::~Animator()
 {
 
 }
-
-// Comme 'SetImage', sauf qu'on lui fournit l'Animation
-void Animator::set_anim(Animation* animation)
+//
+// Set a new animation
+void Animator::set_anim(std::shared_ptr<Animation> animation)
 {
     m_animation = animation;
 
     set_frame(0);
 }
-
-// Retourne un pointeur sur l'anim
-Animation* Animator::get_anim()
+//
+// Get animation
+std::shared_ptr<Animation> Animator::get_anim()
 {
     return m_animation;
 }
-
-// Passer à l'image numéro X
+//
+// Set frame to animate
 void Animator::set_frame(int frame)
 {
     if ( m_animation != NULL)
@@ -65,79 +65,76 @@ void Animator::set_frame(int frame)
         }
     }
 }
-
-//Retourne La frame courante
+//
+// Get current frame
 int Animator::get_currentFrame()
 {
     return m_currentFrame;
 }
-
-// Fixer le temps entre chaques Frame
+//
+// Set time between frame
 void Animator::set_frameTime(float time)
 {
     m_time = time;
 }
-
-// retourne le temps entre chaques Frame
+//
+// Get time between frame
 float Animator::get_frameTime()
 {
     return m_time;
 }
-
-// Jouer en boucle ?
+//
+// Set loop
 void Animator::set_loop(bool loop)
 {
     m_loop = loop;
 }
-
-// Jouer en boucle ?
+//
+// Get loop
 bool Animator::is_loop()
 {
     return m_loop;
 }
-
+//
 // Met en pause la lecture
 void Animator::pause()
 {
     m_paused = true;
 }
-
-// Relance la lecture
+//
+// Play
 void Animator::play()
 {
     m_paused = false;
 }
-
-// Met en pause la lecture, et 'rembobine'
+//
+// Stop and rewind
 void Animator::stop()
 {
     set_frame(0);
     m_elapsedTime = m_time;
     m_paused = true;
 }
-
-// Est En pause ?
+//
+// Get paused
 bool Animator::is_paused()
 {
     return m_paused;
 }
-
-// Est Stoppé ?
-bool Animator::is_stoped()
+//
+// Get stopped
+bool Animator::is_stopped()
 {
     return (m_paused && (m_currentFrame == 0) && (m_elapsedTime == m_time));
 }
-
-// Fonction à appeler à chaque tours de boucle, prend le temps
-// écoulé depuis le dernier appel à la fonction en paramètre
+//
+// Update animation with elapsed time
 void Animator::anim(float elapsedTime)
 {
-    // Si il n'est pas en pause et que l'animation est valide
     if (!m_paused && m_animation != NULL)
     {
         // on retranche le temps écoulé a notre compteur
         m_elapsedTime -= elapsedTime;
-
         // Si Le temps entre chaque frame est atteint
         if (m_elapsedTime <= 0.f)
         {
@@ -158,7 +155,6 @@ void Animator::anim(float elapsedTime)
                     stop();
                 }
             }
-
             // On change la frame
             set_frame(m_currentFrame);
         }
