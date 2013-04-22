@@ -62,7 +62,8 @@ void Scene::draw_all() const
         it != m_drawables.end();
         ++it)
         {
-            it->second->draw(m_window);
+            m_window.draw(*(it->second));
+            //->draw(m_window);
         }
 
     m_window.display();

@@ -10,9 +10,9 @@ Drawable::Drawable(sf::Sprite sprite, std::shared_ptr<Coordinates> coordinates) 
 }
 //
 // Draw sprite on window
-void Drawable::draw(sf::RenderWindow& window) const
+void Drawable::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-    window.draw(m_sprite);
+    target.draw(m_sprite, states);
 }
 //
 // Apply new coordinates to sprite

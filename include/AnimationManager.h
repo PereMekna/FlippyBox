@@ -13,6 +13,7 @@ class AnimationManager
         static AnimationManager& Instance();
 
         std::shared_ptr<Animation> get_animation(std::string animName);
+        void delete_animation(std::string animName);
 
     private:
         static AnimationManager m_instance;

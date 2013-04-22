@@ -13,10 +13,9 @@
 
 #include "Coordinates.h"
 
-class Drawable
+class Drawable : public sf::Drawable
 {
     public:
-        void draw(sf::RenderWindow& window) const;
         void update_position();
         void set_sprite(sf::Sprite sprite);
 
@@ -24,6 +23,7 @@ class Drawable
 
     protected:
         explicit Drawable(sf::Sprite sprite, std::shared_ptr<Coordinates> coordinates);
+        virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
     private:
         sf::Sprite m_sprite;

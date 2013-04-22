@@ -3,14 +3,10 @@
 AnimationManager AnimationManager::m_instance = AnimationManager();
 
 AnimationManager::AnimationManager()
-{
-    //ctor
-}
+{}
 
 AnimationManager::~AnimationManager()
-{
-    //dtor
-}
+{}
 
 AnimationManager& AnimationManager::Instance()
 {
@@ -34,6 +30,14 @@ std::shared_ptr<Animation> AnimationManager::create_animation(std::string animNa
         m_animations.insert(std::make_pair(animName, anim));
         return anim;
     }
-
     return NULL;
+}
+
+void AnimationManager::delete_animation(std::string animName)
+{
+    std::map<std::string, std::shared_ptr<Animation> >::iterator it = m_animations.find(animName);
+    if(it != m_animations.end())
+    {
+        m_animations.erase(it);
+    }
 }
