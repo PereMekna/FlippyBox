@@ -3,7 +3,10 @@
 // Constructor
 Drawable::Drawable(sf::Sprite sprite, std::shared_ptr<Coordinates> coordinates) : m_sprite(sprite), m_coordinates(coordinates)
 {
+    m_width = m_sprite.getGlobalBounds().width;
+    m_height = m_sprite.getGlobalBounds().height;
     std::cout << "Creating Drawable" << std::endl;
+    std::cout << "Width: " << m_width << " Height: " << m_height << std::endl;
 }
 //
 // Draw sprite on window
@@ -22,4 +25,6 @@ void Drawable::update_position()
 void Drawable::set_sprite(sf::Sprite sprite)
 {
     m_sprite = sprite;
+    m_width = m_sprite.getGlobalBounds().width;
+    m_height = m_sprite.getGlobalBounds().height;
 }

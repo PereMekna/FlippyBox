@@ -27,6 +27,8 @@ class Drawable
 
     private:
         sf::Sprite m_sprite;
+        int m_width;
+        int m_height;
         std::shared_ptr<Coordinates> m_coordinates;
 
         Drawable(const Drawable&);
