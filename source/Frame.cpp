@@ -9,7 +9,7 @@ Frame::Frame(const Frame& Cpy)
 }
 
 // Texture et Rect
-Frame::Frame(sf::Texture* newTexture, const sf::Rect<int>& newRect, const sf::Color& newColor)
+Frame::Frame(std::shared_ptr<sf::Texture> newTexture, const sf::Rect<int>& newRect, const sf::Color& newColor)
 {
     texture = newTexture;
     rect = newRect;
@@ -17,7 +17,7 @@ Frame::Frame(sf::Texture* newTexture, const sf::Rect<int>& newRect, const sf::Co
 }
 
 // Texture (Le Rect est au dimension de l'Texture)
-Frame::Frame(sf::Texture* newTexture, const sf::Color& newColor)
+Frame::Frame(std::shared_ptr<sf::Texture> newTexture, const sf::Color& newColor)
 {
     texture = newTexture;
     if (texture != NULL)

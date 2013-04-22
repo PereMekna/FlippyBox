@@ -3,10 +3,10 @@
 Coordinates::Coordinates(int xx, int yy)
 {
     std::cout << "Creating Coordinates: " << xx << " " << yy << std::endl;
-    if(xx <= 800) x = xx;
+    if(xx <= 1024) x = xx;
     else x = 0;
 
-    if (yy <= 600) y = yy;
+    if (yy <= 768) y = yy;
     else y = 0;
 }
 
