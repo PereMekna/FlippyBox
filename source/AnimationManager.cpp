@@ -18,31 +18,31 @@ AnimationManager& AnimationManager::Instance()
 }
 //
 // Return a loaded animation and if not the manager tries to load one
-std::shared_ptr<Animation> AnimationManager::get_animation(std::string animName)
+std::shared_ptr<Animation> AnimationManager::get_animation(std::string link)
 {
-   std::map<std::string, std::shared_ptr<Animation> >::const_iterator it = m_animations.find(animName);
+   std::map<std::string, std::shared_ptr<Animation> >::const_iterator it = m_animations.find(link);
    if(it != m_animations.end())
         return it->second;
    else
-        return create_animation(animName);
+        return create_animation(link);
 }
 //
 // Load a animation
-std::shared_ptr<Animation> AnimationManager::create_animation(std::string animName)
+std::shared_ptr<Animation> AnimationManager::create_animation(std::string link)
 {
     std::shared_ptr<Animation> anim(std::make_shared<Animation>());
-    if(anim->load_from_file(animName + ".anim"))
+    if(anim->load_from_file(link))
     {
-        m_animations.insert(std::make_pair(animName, anim));
+        m_animations.insert(std::make_pair(link, anim));
         return anim;
     }
     return NULL;
 }
 //
 // Delete an animation
-void AnimationManager::delete_animation(std::string animName)
+void AnimationManager::delete_animation(std::string link)
 {
-    std::map<std::string, std::shared_ptr<Animation> >::iterator it = m_animations.find(animName);
+    std::map<std::string, std::shared_ptr<Animation> >::iterator it = m_animations.find(link);
     if(it != m_animations.end())
     {
         m_animations.erase(it);

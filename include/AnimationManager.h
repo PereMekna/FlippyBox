@@ -19,8 +19,8 @@ class AnimationManager
     public:
         static AnimationManager& Instance();
 
-        std::shared_ptr<Animation> get_animation(std::string animName);
-        void delete_animation(std::string animName);
+        std::shared_ptr<Animation> get_animation(std::string link);
+        void delete_animation(std::string link);
 
     private:
         static AnimationManager m_instance;
@@ -29,7 +29,7 @@ class AnimationManager
         AnimationManager& operator= (const AnimationManager&);
         AnimationManager (const AnimationManager&);
 
-        std::shared_ptr<Animation> create_animation(std::string animName);
+        std::shared_ptr<Animation> create_animation(std::string link);
         std::map<std::string, std::shared_ptr<Animation> > m_animations;
 };
 
