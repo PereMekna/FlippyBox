@@ -1,7 +1,8 @@
 #include "Renderer.h"
 //
 // Constructor
-Renderer::Renderer(sf::RenderWindow& window) : m_window(window)
+sf::RenderWindow Renderer::m_window(sf::VideoMode(1024, 768), "FlippyBox");
+Renderer::Renderer()
 {
     std::cout << "Creating Renderer" << std::endl;
 }

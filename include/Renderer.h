@@ -20,7 +20,7 @@
 class Renderer
 {
     public:
-        explicit Renderer(sf::RenderWindow& window);
+        explicit Renderer();
         ~Renderer(){};
 
         void add_drawable(std::string name, std::shared_ptr<Drawable> drawable);
@@ -33,7 +33,7 @@ class Renderer
 
     private:
         std::map<std::string, std::shared_ptr<Drawable> > m_drawables;
-        sf::RenderWindow& m_window;
+        static sf::RenderWindow m_window;
 
         Renderer(const Renderer&);
         Renderer& operator=(const Renderer&);
