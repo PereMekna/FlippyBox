@@ -1,12 +1,12 @@
 /*
 
-    Scene.h
-    Handle all the drawables for drawing the scene.
-    Only one Scene can be created.
+    Renderer.h
+    Handle all the drawables for drawing the Renderer.
+    Only one Renderer can be created.
 
 */
-#ifndef SCENE_H
-#define SCENE_H
+#ifndef RENDERER_H
+#define RENDERER_H
 
 #include <iostream>
 #include <string>
@@ -17,11 +17,11 @@
 
 #include "Drawable.h"
 
-class Scene
+class Renderer
 {
     public:
-        explicit Scene(sf::RenderWindow& window);
-        ~Scene(){};
+        explicit Renderer(sf::RenderWindow& window);
+        ~Renderer(){};
 
         void add_drawable(std::string name, std::shared_ptr<Drawable> drawable);
         void delete_drawable(std::string name);
@@ -35,8 +35,8 @@ class Scene
         std::map<std::string, std::shared_ptr<Drawable> > m_drawables;
         sf::RenderWindow& m_window;
 
-        Scene(const Scene&);
-        Scene& operator=(const Scene&);
+        Renderer(const Renderer&);
+        Renderer& operator=(const Renderer&);
 };
 
-#endif // SCENE_H
+#endif // Renderer_H

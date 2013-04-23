@@ -1,7 +1,7 @@
 #include <iostream>
 #include <exception>
 
-#include "Scene.h"
+#include "Renderer.h"
 #include "Player.h"
 #include "Coordinates.h"
 
@@ -14,7 +14,7 @@ int main()
 {
     // Create scene
     sf::RenderWindow win(sf::VideoMode(1024, 768), "FlippyBox");
-    Scene my_scene(win);
+    Renderer my_scene(win);
 
     // Load texture from image
     sf::Image CharacterImage;
