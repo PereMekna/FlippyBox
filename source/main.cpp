@@ -5,26 +5,25 @@
 #include "Player.h"
 #include "Coordinates.h"
 
-#include "Frame.h"
 #include "Animation.h"
 #include "Animator.h"
 #include "AnimationManager.h"
+#include "ImageManager.h"
 
 int main()
 {
-    // Create scene
-    sf::RenderWindow win(sf::VideoMode(1024, 768), "FlippyBox");
-    Renderer renderer(win);
+    // Create renderer
+    Renderer renderer;
 
     // Load texture from image
-    sf::Image CharacterImage;
-    CharacterImage.loadFromFile("character.png");
+    sf::Image CharacterImage = *(ImageManager::Instance().get_image("character.png"));
     CharacterImage.createMaskFromColor(sf::Color::Black);
     sf::Texture CharacterAnim;
     CharacterAnim.loadFromImage(CharacterImage);
 
     sf::Texture CharacterSprite;
     CharacterSprite.loadFromImage(CharacterImage, sf::Rect<int>(0, 0, 48, 64));
+
     sf::Sprite playerSprite(CharacterSprite);
 
     // Create coordinates
@@ -40,17 +39,17 @@ int main()
     //renderer.delete_drawable("Flippy");
 
     // Define animations
-    std::shared_ptr<Animation> GoUp = AnimationManager::Instance().get_animation("player_up");
-    std::shared_ptr<Animation> GoRight = AnimationManager::Instance().get_animation("player_right");
-    std::shared_ptr<Animation> GoDown = AnimationManager::Instance().get_animation("player_down");
-    std::shared_ptr<Animation> GoLeft = AnimationManager::Instance().get_animation("player_left");
+    std::shared_ptr<Animation> GoUp = AnimationManager::Instance().get_animation("player_up.anim");
+    std::shared_ptr<Animation> GoRight = AnimationManager::Instance().get_animation("player_right.anim");
+    std::shared_ptr<Animation> GoDown = AnimationManager::Instance().get_animation("player_down.anim");
+    std::shared_ptr<Animation> GoLeft = AnimationManager::Instance().get_animation("player_left.anim");
 
     // Create animator for player
     Animator animatorPlayer(my_player, GoUp, true, true, 0.3f);
 
     // Main loop
     sf::Clock clock_anim;
-    while(win.isOpen())
+    while(1)
     {
          if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && animatorPlayer.get_anim() != GoLeft)
             animatorPlayer.set_anim(GoLeft);
