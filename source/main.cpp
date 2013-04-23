@@ -46,7 +46,7 @@ int main()
     std::shared_ptr<Animation> GoLeft = AnimationManager::Instance().get_animation("player_left");
 
     // Create animator for player
-    Animator animatorPlayer(my_player, AnimationManager::Instance().get_animation("player_up"), true, true, 0.3f);
+    Animator animatorPlayer(my_player, GoUp, true, true, 0.3f);
 
     // Main loop
     sf::Clock clock_anim;
