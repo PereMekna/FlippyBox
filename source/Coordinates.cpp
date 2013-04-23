@@ -2,7 +2,6 @@
 
 Coordinates::Coordinates(int xx, int yy)
 {
-    std::cout << "Creating Coordinates: " << xx << " " << yy << std::endl;
     if(xx <= 1024) x = xx;
     else x = 0;
 
@@ -11,9 +10,7 @@ Coordinates::Coordinates(int xx, int yy)
 }
 
 Coordinates::Coordinates(const Coordinates& coor) : x(coor.x), y(coor.y)
-{
-    std::cout << "Creating Coordinates (copy)" << std::endl;
-}
+{}
 
 bool operator==(const Coordinates& c1, const Coordinates& c2)
 {

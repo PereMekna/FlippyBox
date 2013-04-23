@@ -1,3 +1,10 @@
+/*
+
+    AnimationManager.h
+    Creates, loads and returns animation.
+    Manage animation, avoiding duplications.
+
+*/
 #ifndef ANIMATIONMANAGER_H
 #define ANIMATIONMANAGER_H
 

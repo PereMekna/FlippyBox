@@ -63,7 +63,6 @@ void Renderer::draw_all() const
         ++it)
         {
             m_window.draw(*(it->second));
-            //->draw(m_window);
         }
 
     m_window.display();

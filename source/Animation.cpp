@@ -32,8 +32,8 @@ Frame& Animation::operator [] (size_t N)
 {
     return m_frames[N];
 }
-
-
+//
+// Load a animation from a file (with link)
 bool Animation::load_from_file(std::string link)
 {
     std::ifstream AnimFile(link, std::ios::in);

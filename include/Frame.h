@@ -1,3 +1,9 @@
+/*
+
+    Frame.h
+    Animation is made of frames.
+
+*/
 #ifndef FRAME_H
 #define FRAME_H
 

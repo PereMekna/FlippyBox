@@ -3,7 +3,6 @@
     Coordinates.h
     Provide structure for coordinates.
 
-
 */
 #ifndef COORDINATES_H
 #define COORDINATES_H

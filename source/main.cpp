@@ -14,7 +14,7 @@ int main()
 {
     // Create scene
     sf::RenderWindow win(sf::VideoMode(1024, 768), "FlippyBox");
-    Renderer my_scene(win);
+    Renderer renderer(win);
 
     // Load texture from image
     sf::Image CharacterImage;
@@ -33,11 +33,11 @@ int main()
     // Create player
     std::shared_ptr<Player> my_player(std::make_shared<Player>(playerSprite, my_coor));
 
-    // Add player to scene
-    my_scene.add_drawable("Flippy", my_player);
+    // Add player to renderer
+    renderer.add_drawable("Flippy", my_player);
 
-    // delete player from scene
-    //my_scene.delete_drawable("Flippy");
+    // delete player from renderer
+    //renderer.delete_drawable("Flippy");
 
     // Define animations
     std::shared_ptr<Animation> GoUp = AnimationManager::Instance().get_animation("player_up");
@@ -64,8 +64,8 @@ int main()
         sf::Time elapsed = clock_anim.restart();
         animatorPlayer.anim(elapsed.asSeconds());
 
-        my_scene.update_position_sprites();
-        my_scene.draw_all();
+        renderer.update_position_sprites();
+        renderer.draw_all();
     }
     return EXIT_SUCCESS;
 }

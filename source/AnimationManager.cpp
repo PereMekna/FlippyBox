@@ -1,18 +1,23 @@
 #include "AnimationManager.h"
-
+//
+// Singleton
 AnimationManager AnimationManager::m_instance = AnimationManager();
-
+//
+// Constructor
 AnimationManager::AnimationManager()
 {}
-
+//
+// Destructor
 AnimationManager::~AnimationManager()
 {}
-
+//
+// Singleton
 AnimationManager& AnimationManager::Instance()
 {
     return m_instance;
 }
-
+//
+// Return a loaded animation and if not the manager tries to load one
 std::shared_ptr<Animation> AnimationManager::get_animation(std::string animName)
 {
    std::map<std::string, std::shared_ptr<Animation> >::const_iterator it = m_animations.find(animName);
@@ -21,7 +26,8 @@ std::shared_ptr<Animation> AnimationManager::get_animation(std::string animName)
    else
         return create_animation(animName);
 }
-
+//
+// Load a animation
 std::shared_ptr<Animation> AnimationManager::create_animation(std::string animName)
 {
     std::shared_ptr<Animation> anim(std::make_shared<Animation>());
@@ -32,7 +38,8 @@ std::shared_ptr<Animation> AnimationManager::create_animation(std::string animNa
     }
     return NULL;
 }
-
+//
+// Delete an animation
 void AnimationManager::delete_animation(std::string animName)
 {
     std::map<std::string, std::shared_ptr<Animation> >::iterator it = m_animations.find(animName);

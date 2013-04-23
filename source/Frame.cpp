@@ -1,13 +1,13 @@
 #include "Frame.h"
-
-// Par copie
+//
+// Copy
 Frame::Frame(const Frame& Cpy)
 {
     texture = Cpy.texture;
     rect = Cpy.rect;
     color = Cpy.color;
 }
-
+//
 // Texture et Rect
 Frame::Frame(std::shared_ptr<sf::Texture> newTexture, const sf::Rect<int>& newRect, const sf::Color& newColor)
 {
@@ -15,7 +15,7 @@ Frame::Frame(std::shared_ptr<sf::Texture> newTexture, const sf::Rect<int>& newRe
     rect = newRect;
     color = newColor;
 }
-
+//
 // Texture (Le Rect est au dimension de l'Texture)
 Frame::Frame(std::shared_ptr<sf::Texture> newTexture, const sf::Color& newColor)
 {
@@ -25,8 +25,8 @@ Frame::Frame(std::shared_ptr<sf::Texture> newTexture, const sf::Color& newColor)
 
     color = newColor;
 }
-
-// destructeur
+//
+// Destructor
 Frame::~Frame()
 {
 

@@ -1,3 +1,10 @@
+/*
+
+    Animation.h
+    Provide ressource class for animation.
+    Basically a animation is a vector of frames.
+
+*/
 #ifndef ANIMATION_H
 #define ANIMATION_H
 

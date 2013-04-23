@@ -1,4 +1,9 @@
-#ifndef ANIMATOR_H
+/*
+
+    Animator.h
+    Handle animation for a drawable.
+
+*/#ifndef ANIMATOR_H
 #define ANIMATOR_H
 
 #include <SFML\Graphics.hpp>
