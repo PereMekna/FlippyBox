@@ -44,7 +44,6 @@ bool Animation::load_from_file(std::string link)
     int widthFrame;
     int heightFrame;
     AnimFile >> linkImage >> nbFrames >> widthFrame >> heightFrame;
-    std::cout << linkImage << " " << nbFrames << " " << widthFrame << " " << heightFrame << " " << AnimFile.tellg() << std::endl;
 
     sf::Image Img;
     Img.loadFromFile(linkImage);
@@ -56,7 +55,6 @@ bool Animation::load_from_file(std::string link)
     for(int i = 0; i < nbFrames; ++i)
     {
         AnimFile >> x >> y;
-        std::cout << x << " " << y << std::endl;
         this->push_frame(Frame(std::make_shared<sf::Texture>(Txtr), sf::Rect<int>(x, y, widthFrame, heightFrame)));
     }
 
