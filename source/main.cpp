@@ -32,7 +32,7 @@ int main()
     std::shared_ptr<Player> my_player(std::make_shared<Player>(playerSprite, my_coor));
 
     // Add player to renderer
-    renderer.add_drawable("Flippy", my_player);
+    renderer.add_drawable("Flippy", Renderer::RendererLayer::Box , my_player);
 
     // delete player from renderer
     //renderer.delete_drawable("Flippy");

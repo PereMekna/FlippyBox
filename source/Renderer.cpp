@@ -8,16 +8,16 @@ Renderer::Renderer()
 }
 //
 // Add a drawable to Renderer
-void Renderer::add_drawable(std::string name, std::shared_ptr<Drawable> drawable)
+void Renderer::add_drawable(std::string name, RendererLayer layer, std::shared_ptr<Drawable> drawable)
 {
     std::cout << "Adding Drawable: " << name << std::endl;
-    if(drawable) m_drawables.insert(std::make_pair(name, drawable));
+    if(drawable) m_drawables.insert(std::make_pair(std::make_pair(name, layer), drawable));
 }
 //
 // Delete a drawable from Renderer
-void Renderer::delete_drawable(std::string name)
+void Renderer::delete_drawable(std::string name, RendererLayer layer)
 {
-    std::map<std::string, std::shared_ptr<Drawable> >::iterator it = m_drawables.find(name);
+    std::map<std::pair<std::string, RendererLayer>, std::shared_ptr<Drawable> >::iterator it = m_drawables.find(std::make_pair(name, layer));
 
     if(it == m_drawables.end()) // Not found
     {
@@ -37,7 +37,7 @@ int Renderer::get_number_drawables() const
 }
 //
 // Clear all Drawables from Renderer
-void Renderer::clear_drawable()
+void Renderer::clear_drawables()
 {
     std::cout << "Deleting all Drawables " << std::endl;
     m_drawables.clear();
@@ -46,7 +46,7 @@ void Renderer::clear_drawable()
 // Update position of all sprites in the Renderer
 void Renderer::update_position_sprites()
 {
-    for(std::map<std::string, std::shared_ptr<Drawable> >::const_iterator it = m_drawables.begin();
+    for(std::map<std::pair<std::string, RendererLayer>, std::shared_ptr<Drawable> >::const_iterator it = m_drawables.begin();
         it != m_drawables.end();
         ++it)
         {
@@ -59,12 +59,18 @@ void Renderer::draw_all() const
 {
     m_window.clear(sf::Color::White);
 
-    for(std::map<std::string, std::shared_ptr<Drawable> >::const_iterator it = m_drawables.begin();
-        it != m_drawables.end();
-        ++it)
-        {
-            m_window.draw(*(it->second));
-        }
+    draw_drawables();
 
     m_window.display();
+}
+
+void Renderer::draw_drawables() const
+{
+    for(std::map<std::pair<std::string, RendererLayer>, std::shared_ptr<Drawable> >::const_iterator it = m_drawables.begin();
+    it != m_drawables.end();
+    ++it)
+    {
+        // TODO Handle layers
+        m_window.draw(*(it->second));
+    }
 }

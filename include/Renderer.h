@@ -22,17 +22,18 @@ class Renderer
     public:
         explicit Renderer();
         ~Renderer(){};
-
-        void add_drawable(std::string name, std::shared_ptr<Drawable> drawable);
-        void delete_drawable(std::string name);
+        enum RendererLayer{Background, Box, Hud};
+        void add_drawable(std::string name, RendererLayer layer, std::shared_ptr<Drawable> drawable);
+        void delete_drawable(std::string name, RendererLayer layer);
         int get_number_drawables() const;
-        void clear_drawable();
+        void clear_drawables();
 
         void draw_all() const;
         void update_position_sprites();
 
     private:
-        std::map<std::string, std::shared_ptr<Drawable> > m_drawables;
+        void draw_drawables() const;
+        std::map<std::pair<std::string, RendererLayer>, std::shared_ptr<Drawable> > m_drawables;
         static sf::RenderWindow m_window;
 
         Renderer(const Renderer&);
