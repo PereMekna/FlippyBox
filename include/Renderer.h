@@ -25,7 +25,7 @@ class Renderer
 
         void add_drawable(std::string name, std::shared_ptr<Drawable> drawable);
         void delete_drawable(std::string name);
-        int get_number_drawables();
+        int get_number_drawables() const;
         void clear_drawable();
 
         void draw_all() const;

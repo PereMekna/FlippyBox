@@ -20,18 +20,18 @@ class Animator
         virtual ~Animator();
 
         void set_anim(std::shared_ptr<Animation> anim);
-        std::shared_ptr<Animation> get_anim();
+        std::shared_ptr<Animation> get_anim() const;
         void set_frame(int frame);
-        int get_currentFrame();
+        int get_currentFrame() const;
         void set_frameTime(float time);
-        float get_frameTime();
+        float get_frameTime() const;
         void set_loop(bool loop);
-        bool is_loop();
+        bool is_loop() const;
         void pause();
         void play();
         void stop();
-        bool is_paused();
-        bool is_stopped();
+        bool is_paused() const;
+        bool is_stopped() const;
         void anim(float elapsedTime);
 
     private:

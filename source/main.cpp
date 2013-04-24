@@ -1,5 +1,4 @@
 #include <iostream>
-#include <exception>
 
 #include "Renderer.h"
 #include "Player.h"

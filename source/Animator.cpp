@@ -39,7 +39,7 @@ void Animator::set_anim(std::shared_ptr<Animation> animation)
 }
 //
 // Get animation
-std::shared_ptr<Animation> Animator::get_anim()
+std::shared_ptr<Animation> Animator::get_anim() const
 {
     return m_animation;
 }
@@ -67,7 +67,7 @@ void Animator::set_frame(int frame)
 }
 //
 // Get current frame
-int Animator::get_currentFrame()
+int Animator::get_currentFrame() const
 {
     return m_currentFrame;
 }
@@ -79,7 +79,7 @@ void Animator::set_frameTime(float time)
 }
 //
 // Get time between frame
-float Animator::get_frameTime()
+float Animator::get_frameTime() const
 {
     return m_time;
 }
@@ -91,7 +91,7 @@ void Animator::set_loop(bool loop)
 }
 //
 // Get loop
-bool Animator::is_loop()
+bool Animator::is_loop() const
 {
     return m_loop;
 }
@@ -117,13 +117,13 @@ void Animator::stop()
 }
 //
 // Get paused
-bool Animator::is_paused()
+bool Animator::is_paused() const
 {
     return m_paused;
 }
 //
 // Get stopped
-bool Animator::is_stopped()
+bool Animator::is_stopped() const
 {
     return (m_paused && (m_currentFrame == 0) && (m_elapsedTime == m_time));
 }

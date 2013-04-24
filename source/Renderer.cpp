@@ -31,7 +31,7 @@ void Renderer::delete_drawable(std::string name)
 }
 //
 // Return number of drawables
-int Renderer::get_number_drawables()
+int Renderer::get_number_drawables() const
 {
     return m_drawables.size();
 }
