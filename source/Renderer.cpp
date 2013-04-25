@@ -44,7 +44,7 @@ void Renderer::clear_drawables()
 }
 //
 // Update position of all sprites in the Renderer
-void Renderer::update_position_sprites()
+void Renderer::update_drawables()
 {
     for(std::map<std::pair<std::string, RendererLayer>, std::shared_ptr<Drawable> >::const_iterator it = m_drawables.begin();
         it != m_drawables.end();
@@ -59,18 +59,20 @@ void Renderer::draw_all() const
 {
     m_window.clear(sf::Color::White);
 
-    draw_drawables();
+    draw_drawables(Renderer::RendererLayer::Background);
+    draw_drawables(Renderer::RendererLayer::Box);
+    draw_drawables(Renderer::RendererLayer::Hud);
 
     m_window.display();
 }
 
-void Renderer::draw_drawables() const
+void Renderer::draw_drawables(RendererLayer layer) const
 {
     for(std::map<std::pair<std::string, RendererLayer>, std::shared_ptr<Drawable> >::const_iterator it = m_drawables.begin();
     it != m_drawables.end();
     ++it)
     {
-        // TODO Handle layers
+        if((it->first).second == layer)
         m_window.draw(*(it->second));
     }
 }

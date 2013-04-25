@@ -29,10 +29,10 @@ class Renderer
         void clear_drawables();
 
         void draw_all() const;
-        void update_position_sprites();
+        void update_drawables();
 
     private:
-        void draw_drawables() const;
+        void draw_drawables(RendererLayer layer) const;
         std::map<std::pair<std::string, RendererLayer>, std::shared_ptr<Drawable> > m_drawables;
         static sf::RenderWindow m_window;
 
