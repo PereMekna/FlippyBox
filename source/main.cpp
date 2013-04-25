@@ -17,19 +17,12 @@ int main()
     // Load texture from image
     sf::Image CharacterImage = *(ImageManager::Instance().get_image("character.png"));
     CharacterImage.createMaskFromColor(sf::Color::Black);
-    sf::Texture CharacterAnim;
-    CharacterAnim.loadFromImage(CharacterImage);
-
     sf::Texture CharacterSprite;
     CharacterSprite.loadFromImage(CharacterImage, sf::Rect<int>(0, 0, 48, 64));
-
     sf::Sprite playerSprite(CharacterSprite);
 
-    // Create coordinates
-    std::shared_ptr<Coordinates> my_coor(std::make_shared<Coordinates>(400, 300));
-
     // Create player
-    std::shared_ptr<Player> my_player(std::make_shared<Player>(playerSprite, my_coor));
+    std::shared_ptr<Player> my_player(std::make_shared<Player>(playerSprite, std::make_shared<Coordinates>(400, 300)));
 
     // Add player to renderer
     renderer.add_drawable("Flippy", Renderer::RendererLayer::Box , my_player);
@@ -62,7 +55,7 @@ int main()
         sf::Time elapsed = clock_anim.restart();
         animatorPlayer.anim(elapsed.asSeconds());
 
-        renderer.update_position_sprites();
+        renderer.update_drawables();
         renderer.draw_all();
     }
     return EXIT_SUCCESS;
