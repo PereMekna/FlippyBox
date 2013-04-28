@@ -22,10 +22,11 @@ int main()
     sf::Sprite playerSprite(CharacterSprite);
 
     // Create player
-    std::shared_ptr<Player> my_player(std::make_shared<Player>(playerSprite, std::make_shared<Coordinates>(400, 300)));
+    std::shared_ptr<Player> my_player(std::make_shared<Player>( std::make_shared<sf::Sprite>(playerSprite), std::make_shared<Coordinates>(400, 300)));
 
     // Add player to renderer
     renderer.add_drawable("Flippy", Renderer::RendererLayer::Box , my_player);
+
 
     // delete player from renderer
     //renderer.delete_drawable("Flippy");

@@ -12,7 +12,7 @@ Animator::Animator(bool play, bool loop, float time)
 }
 //
 // Constructor with Animation
-Animator::Animator(std::shared_ptr<Drawable> drawable, std::shared_ptr<Animation> anim, bool play, bool loop, float time)
+Animator::Animator(std::shared_ptr<Player> drawable, std::shared_ptr<Animation> anim, bool play, bool loop, float time)
 {
     m_time = time;
     m_elapsedTime = time;

@@ -9,14 +9,14 @@
 #include <SFML\Graphics.hpp>
 #include <memory>
 
-#include "Drawable.h"
+#include "Player.h"
 #include "Animation.h"
 
 class Animator
 {
     public:
         Animator(bool Play = false, bool Loop = true, float Time = 0.f);
-        Animator(std::shared_ptr<Drawable> drawable, std::shared_ptr<Animation> anim, bool play = false, bool loop = true, float time = 0.f);
+        Animator(std::shared_ptr<Player> drawable, std::shared_ptr<Animation> anim, bool play = false, bool loop = true, float time = 0.f);
         virtual ~Animator();
 
         void set_anim(std::shared_ptr<Animation> anim);
@@ -41,7 +41,7 @@ class Animator
         bool m_loop;
 
         std::shared_ptr<Animation> m_animation;
-        std::shared_ptr<Drawable> m_drawable;
+        std::shared_ptr<Player> m_drawable;
         unsigned int m_currentFrame;
 
 };

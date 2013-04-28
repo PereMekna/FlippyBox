@@ -10,12 +10,12 @@
 
 #include <iostream>
 #include <string>
-#include<vector>
-#include<memory>
+#include <vector>
+#include <memory>
 
 #include <SFML\Graphics.hpp>
 
-#include "Drawable.h"
+#include "GraphicObject.h"
 
 class Renderer
 {
@@ -23,7 +23,7 @@ class Renderer
         explicit Renderer();
         ~Renderer(){};
         enum RendererLayer{Background, Box, Hud};
-        void add_drawable(std::string name, RendererLayer layer, std::shared_ptr<Drawable> drawable);
+        void add_drawable(std::string name, RendererLayer layer, std::shared_ptr<GraphicObject> drawable);
         void delete_drawable(std::string name, RendererLayer layer);
         int get_number_drawables() const;
         void clear_drawables();
@@ -33,7 +33,7 @@ class Renderer
 
     private:
         void draw_drawables(RendererLayer layer) const;
-        std::map<std::pair<std::string, RendererLayer>, std::shared_ptr<Drawable> > m_drawables;
+        std::map<std::pair<std::string, RendererLayer>, std::shared_ptr<GraphicObject> > m_drawables;
         static sf::RenderWindow m_window;
 
         Renderer(const Renderer&);
