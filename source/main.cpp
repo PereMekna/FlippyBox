@@ -52,7 +52,9 @@ int main()
             animatorPlayer.set_anim(GoUp);
         else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && animatorPlayer.get_anim() != GoDown)
             animatorPlayer.set_anim(GoDown);
-
+        /*je peux te conseiller, pour récupèrer les instructions, de créer une structure (j'ai fait ça uniquement en C)
+        d'"input", avec des booléens comme input.left, input.jump, qui stocke les états des touches à chaque 
+        tour de boucle d'affichage :)*/
         sf::Time elapsed = clock_anim.restart();
         animatorPlayer.anim(elapsed.asSeconds());
 
